@@ -489,7 +489,7 @@ $(function(){
                 `<div class="row">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">${who[i]}</div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-4">${cur_date_time_array[i]}</div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-2">${aryIannaTimeZones[i]}</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-2">${cur_time_zone[i]}</div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-3">${gmt_ch_array[i]}<br>${gmt_en_array[i]}</div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">${gmt_array[i]}</div>
                 </div>`
