@@ -531,11 +531,13 @@ $(function(){
                         ${cur_date_time_array[i]}<br>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-7">${cur_time_zone_hours_array[i]}</div>
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${cur_time_zone[i]}</div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                        ${cur_time_zone[i]}<br>
+                        ${gmt_array[i]}
+                    </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         ${gmt_ch_array[i]}<br>
-                        ${gmt_en_array[i]}<br>
-                        ${gmt_array[i]}
+                        ${gmt_en_array[i]}
                     </div>
                 </div>`
             );
