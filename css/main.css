@@ -1,0 +1,14 @@
+#main .row {
+    display: flex;
+    align-items: center;
+}
+#main .row:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#main .row:first-child {
+    background-color: #000;
+    color: #FFF;
+}
+#main .row div {
+    text-align: center;
+}
