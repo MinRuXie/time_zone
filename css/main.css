@@ -13,15 +13,18 @@
     text-align: center;
     overflow-x: auto;
 }
-#main .row div span {
+#main .row div .hour {
     padding: 20px 4px;
     display: inline-block;
     width: 26px;
 }
-#main .row div span:nth-child(even) {
+#main .row div .hour:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.5);
     color: #FFF;
 }
-#main .row div span:nth-child(odd) {
+#main .row div .hour:nth-child(odd) {
     background-color: rgba(0, 0, 0, 0.2);
+}
+#main .row div .hour.cur {
+    background-color: lightseagreen;
 }

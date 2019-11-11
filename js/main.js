@@ -451,7 +451,7 @@ $(function(){
                 timeZoneName: 'long' //(e.g., British Summer Time)
             });
             
-            let strTime_4 = date.toLocaleString("zh-TW", {
+            let strTime_4 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
                 weekday: 'long',
@@ -509,21 +509,26 @@ $(function(){
                 }
             }
 
-            // 轉換為字串
+            // 調整順序 (目前時間放在中間)
+            for(let k=0;k<12;k++){
+                temp_hours.unshift(temp_hours.pop());
+            }
 
+            // 轉換為 HTML
             let temp_html_hour_array = [];
 
             for(let c=0;c<temp_hours.length;c++){
-                temp_html_hour_array.push(`<span class="hour">${temp_hours[c]}</span>`);
+                let html_str = `<span class="hour">${temp_hours[c]}</span>`;
+                // 目前時間
+                if(temp_hours[c]==cur_hour[i]){
+                    html_str = `<span class="hour cur">${temp_hours[c]}</span>`;
+                }
+                temp_html_hour_array.push(html_str);
             }
 
+            // 轉換為字串
             cur_time_zone_hours_array.push(temp_html_hour_array.join(""));
-            // cur_time_zone_hours_array.push(temp_hours.join("-"));
 
-            console.log(cur_time_zone_hours_array);
-
-
-            
             main.find('.container').append(
                 `<div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
