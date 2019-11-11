@@ -426,6 +426,7 @@ $(function(){
     //-------------------
     // 變數宣告
     //-------------------
+    let add = $('#add');
     let main = $('#main');
 
     //-------------------
@@ -556,6 +557,15 @@ $(function(){
     //     }
     // }
 
+    /* 新增輸入控件 */
+    function buildInput() {
+        for(let h=0;h<aryIannaTimeZones.length;h++){
+            add.find('#timezone select').append(`
+                <option value="">${aryIannaTimeZones[h]}</option>
+            `);
+        }
+    }
+
     //-------------------
     // Event Binding
     //-------------------
@@ -571,4 +581,5 @@ $(function(){
 
     refresh(); // 刷新資料
     appendData(); // 插入資料
+    buildInput(); // 新增輸入控件
 });
