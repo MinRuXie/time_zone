@@ -579,9 +579,8 @@ $(function(){
 
     /* 新增成員 */
     $('#add-btn').on('click', function(event){
-        // console.log($('#member_name').value);
-        // $('#member_name').value();
-        // $('#member_location')
+        console.log($('#member_name').val());
+        console.log($('#member_location :selected').text());
         
         refresh(); // 刷新資料
         main.find('.row').not(':first-child').remove();
