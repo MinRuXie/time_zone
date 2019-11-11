@@ -561,7 +561,7 @@ $(function(){
     function buildInput() {
         for(let h=0;h<aryIannaTimeZones.length;h++){
             add.find('#timezone select').append(`
-                <option value="">${aryIannaTimeZones[h]}</option>
+                <option value="${aryIannaTimeZones[h]}">${aryIannaTimeZones[h]}</option>
             `);
         }
     }
@@ -569,11 +569,25 @@ $(function(){
     //-------------------
     // Event Binding
     //-------------------
+    
+    /* 刷新時間 */
     $('#refresh-btn').on('click', function(event){
         refresh(); // 刷新資料
         main.find('.row').not(':first-child').remove();
         appendData(); // 插入資料
     });
+
+    /* 新增成員 */
+    $('#add-btn').on('click', function(event){
+        // console.log($('#member_name').value);
+        // $('#member_name').value();
+        // $('#member_location')
+        
+        refresh(); // 刷新資料
+        main.find('.row').not(':first-child').remove();
+        appendData(); // 插入資料
+    });
+
 
     //-------------------
     // 初始化
