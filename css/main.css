@@ -11,4 +11,16 @@
 }
 #main .row div {
     text-align: center;
+    overflow-x: auto;
+}
+#main .row div span {
+    padding: 20px 4px;
+    display: inline-block;
+}
+#main .row div span:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+}
+#main .row div span:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
 }

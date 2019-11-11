@@ -3,17 +3,17 @@ let cur_date_time_array = []; //目前日期+時間+星期幾
 let cur_hour = []; // 目前幾點
 let cur_time_zone = [
     'Asia/Taipei',
-    'Australia/Adelaide',
-    'Australia/Melbourne',
     'Asia/Tokyo',
-    'America/Los_Angeles'
+    'America/Los_Angeles',
+    'Australia/Adelaide',
+    'Australia/Melbourne'
 ];
 let who = [
     '我們',
-    '廖廖',
-    '妍寧',
     'PM',
-    '米國電商'
+    '米國電商',
+    '廖廖',
+    '妍寧'
 ];
 
 let gmt_array = [];  // GMT (Greenwich Mean Time) 差
@@ -511,7 +511,14 @@ $(function(){
 
             // 轉換為字串
 
-            cur_time_zone_hours_array.push(temp_hours.join("-"));
+            let temp_html_hour_array = [];
+
+            for(let c=0;c<temp_hours.length;c++){
+                temp_html_hour_array.push(`<span class="hour">${temp_hours[c]}</span>`);
+            }
+
+            cur_time_zone_hours_array.push(temp_html_hour_array.join(""));
+            // cur_time_zone_hours_array.push(temp_hours.join("-"));
 
             console.log(cur_time_zone_hours_array);
 
@@ -519,15 +526,17 @@ $(function(){
             
             main.find('.container').append(
                 `<div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${who[i]}</div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-7">
-                        ${cur_date_time_array[i]}
-                        <br>
-                        ${cur_time_zone_hours_array[i]}
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                        ${who[i]}<br>
+                        ${cur_date_time_array[i]}<br>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-2">${cur_time_zone[i]}</div>
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${gmt_ch_array[i]}<br>${gmt_en_array[i]}</div>
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${gmt_array[i]}</div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-7">${cur_time_zone_hours_array[i]}</div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${cur_time_zone[i]}</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                        ${gmt_ch_array[i]}<br>
+                        ${gmt_en_array[i]}<br>
+                        ${gmt_array[i]}
+                    </div>
                 </div>`
             );
         }
