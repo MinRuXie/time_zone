@@ -579,12 +579,17 @@ $(function(){
 
     /* 新增成員 */
     $('#add-btn').on('click', function(event){
-        console.log($('#member_name').val());
-        console.log($('#member_location :selected').text());
+        let member_name = $('#member_name').val();
+        let member_location = $('#member_location :selected').text();
         
-        refresh(); // 刷新資料
-        main.find('.row').not(':first-child').remove();
-        appendData(); // 插入資料
+        if(member_name != '' && member_location != ''){
+            cur_time_zone.push(member_location);
+            who.push(member_name);
+            
+            refresh(); // 刷新資料
+            main.find('.row').not(':first-child').remove();
+            appendData(); // 插入資料
+        }
     });
 
 
