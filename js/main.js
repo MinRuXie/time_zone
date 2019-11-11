@@ -1,5 +1,6 @@
 let date = new Date();
 let cur_date_time_array = []; //目前日期+時間+星期幾
+let cur_hour = []; // 目前幾點
 let cur_time_zone = [
     'Asia/Taipei',
     'Australia/Adelaide',
@@ -15,8 +16,6 @@ let who = [
     '米國電商'
 ];
 
-// let contry_array = []; // 國家
-// let city_array = []; // 城市
 let gmt_array = [];  // GMT (Greenwich Mean Time) 差
 let gmt_en_array = []; // 標準時間名(en)
 let gmt_ch_array = []; // 標準時間名(ch)
@@ -454,12 +453,19 @@ $(function(){
             
             let strTime_4 = date.toLocaleString("zh-TW", {
                 timeZone: `${timeZone}`,
+                hourCycle: 'h24',
                 weekday: 'long',
                 year: 'numeric', month: '2-digit', day: '2-digit',
                 hour: '2-digit', minute: '2-digit', second: '2-digit'
             });
+
+            let strTime_5 = date.toLocaleString("en-US", {
+                timeZone: `${timeZone}`,
+                hourCycle: 'h24',
+                hour: '2-digit'
+            });
     
-            // 目前時間 (每秒抓取)
+            // 目前日期時間星期幾
             cur_date_time_array.push(strTime_4);
 
             // GMT 差
@@ -476,6 +482,9 @@ $(function(){
             let re_gmt_en = /(AM(.+)|PM(.+))/g; // 取出 AM 或 PM 後的字串
             let my_gmt_en = re_gmt_en.exec(strTime_3);
             gmt_en_array.push(my_gmt_en[2] ? my_gmt_en[2] : my_gmt_en[3]);
+
+            // 目前幾點
+            cur_hour.push(strTime_5);
         });
 
         // updateCurrentDateTime(); // 更新目前時間
@@ -484,14 +493,41 @@ $(function(){
 
     /* 插入資料 */
     function appendData() {
+        let hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+        let cur_time_zone_hours_array = [];
+
         for(let i=0;i<cur_time_zone.length;i++){
+            let temp_hours = [];
+            for(let j=hours.indexOf(cur_hour[i]);j<hours.length;j++){
+                // 從目前時間加入
+                temp_hours.push(hours[j]);
+            }
+            if(temp_hours.length<24){
+                // 從頭加入
+                for(let t=0;t<hours.indexOf(cur_hour[i]);t++){
+                    temp_hours.push(hours[t]);
+                }
+            }
+
+            // 轉換為字串
+
+            cur_time_zone_hours_array.push(temp_hours.join("-"));
+
+            console.log(cur_time_zone_hours_array);
+
+
+            
             main.find('.container').append(
                 `<div class="row">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">${who[i]}</div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">${cur_date_time_array[i]}</div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                        ${cur_date_time_array[i]}
+                        <br>
+                        ${cur_time_zone_hours_array[i]}
+                    </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">${cur_time_zone[i]}</div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-3">${gmt_ch_array[i]}<br>${gmt_en_array[i]}</div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-2">${gmt_array[i]}</div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${gmt_ch_array[i]}<br>${gmt_en_array[i]}</div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">${gmt_array[i]}</div>
                 </div>`
             );
         }
@@ -519,6 +555,4 @@ $(function(){
 
     refresh(); // 刷新資料
     appendData(); // 插入資料
-
-    
 });
