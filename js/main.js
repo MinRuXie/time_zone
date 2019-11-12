@@ -452,11 +452,30 @@ $(function(){
                 timeZoneName: 'long' //(e.g., British Summer Time)
             });
             
-            let strTime_4 = date.toLocaleString("en-US", {
+            let strTime_4_1_1 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
-                weekday: 'short',
-                year: 'numeric', month: '2-digit', day: '2-digit',
+                year: 'numeric'
+            });
+            let strTime_4_1_2 = date.toLocaleString("en-US", {
+                timeZone: `${timeZone}`,
+                hourCycle: 'h24',
+                month: '2-digit'
+            });
+            let strTime_4_1_3 = date.toLocaleString("en-US", {
+                timeZone: `${timeZone}`,
+                hourCycle: 'h24',
+                day: '2-digit'
+            });
+
+            let strTime_4_2 = date.toLocaleString("en-US", {
+                timeZone: `${timeZone}`,
+                weekday: 'short'
+            });
+
+            let strTime_4_3 = date.toLocaleString("en-US", {
+                timeZone: `${timeZone}`,
+                hourCycle: 'h24',
                 hour: '2-digit', minute: '2-digit', second: '2-digit'
             });
 
@@ -467,7 +486,7 @@ $(function(){
             });
     
             // 目前日期時間星期幾
-            cur_date_time_array.push(strTime_4);
+            cur_date_time_array.push(`${strTime_4_1_1}/${strTime_4_1_2}/${strTime_4_1_3} ${strTime_4_2} ${strTime_4_3}`);
 
             // GMT 差
             let re_gmt = /\[(.+?)\]/g; // 取出中括號的內容
