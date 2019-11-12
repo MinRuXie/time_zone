@@ -589,6 +589,10 @@ $(function(){
             refresh(); // 刷新資料
             main.find('.row').not(':first-child').remove();
             appendData(); // 插入資料
+
+            // 清空
+            $('#member_name').val('');
+            $('#member_location').val('');
         }
     });
 
