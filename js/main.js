@@ -455,7 +455,7 @@ $(function(){
             let strTime_4 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
-                weekday: 'long',
+                weekday: 'short',
                 year: 'numeric', month: '2-digit', day: '2-digit',
                 hour: '2-digit', minute: '2-digit', second: '2-digit'
             });
@@ -596,7 +596,6 @@ $(function(){
         }
     });
 
-
     //-------------------
     // 初始化
     //-------------------
@@ -604,4 +603,23 @@ $(function(){
     refresh(); // 刷新資料
     appendData(); // 插入資料
     buildInput(); // 新增輸入控件
+
+    /* 時區欄位 hover 效果 */
+    $('.row').each(function(index){
+        $(this).find('.hour').each(function(index2){
+            $(this).on('mouseover', function(event){
+                $('.row').each(function(index3){
+                    $(this).find('.hour').each(function(index4){
+                        if(index2==index4){
+                            $(this).css('opacity', '0.7');
+                        }
+                        else{
+                            $(this).css('opacity', '1');
+                        }
+                    });
+                });
+            });
+        });
+    });
+
 });
