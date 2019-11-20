@@ -16,6 +16,7 @@ let who = [
     '妍寧'
 ];
 
+let hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
 let gmt_array = [];  // GMT (Greenwich Mean Time) 差
 let gmt_en_array = []; // 標準時間名(en)
 let gmt_ch_array = []; // 標準時間名(ch)
@@ -376,50 +377,8 @@ let aryIannaTimeZones =
     'Africa/Johannesburg'
 ];
 
-aryIannaTimeZones.sort(); // 重新排序
-// aryIannaTimeZones.forEach((timeZone)=>
-// {
-//     let strTime = date.toLocaleString("zh-TW", {
-//         timeZone: `${timeZone}`,
-//         timeZoneName: 'short' //(e.g., GMT+1)
-//     });
-//     let strTime_2 = date.toLocaleString("zh-TW", {
-//         timeZone: `${timeZone}`,
-//         timeZoneName: 'long' //(e.g., British Summer Time)
-//     });
-//     let strTime_3 = date.toLocaleString("en-US", {
-//         timeZone: `${timeZone}`,
-//         timeZoneName: 'long' //(e.g., British Summer Time)
-//     });
-//     let strTime_4 = date.toLocaleString("zh-TW", {
-//         timeZone: `${timeZone}`,
-//         weekday: 'long',
-//         year: 'numeric',
-//         month: '2-digit',
-//         day: '2-digit',
-//         hour: '2-digit',
-//         minute: '2-digit',
-//         second: '2-digit'
-//     });
-
-//     // 目前時間 (每秒抓取)
-//     cur_date_time_array.push(strTime_4);
-
-//     // GMT 差
-//     let re_gmt = /\[(.+?)\]/g; // 取出中括號的內容
-//     let my_gmt = re_gmt.exec(strTime);
-//     gmt_array.push(my_gmt[1]);
-    
-//     // 標準時間名 (ch))
-//     let re_gmt_ch = /\[(.+?)\]/g; // 取出中括號的內容
-//     let my_gmt_ch = re_gmt_ch.exec(strTime_2);
-//     gmt_ch_array.push(my_gmt_ch[1]);
-
-//     // 標準時間名 (en)
-//     let re_gmt_en = /(AM(.+)|PM(.+))/g; // 取出 AM 或 PM 後的字串
-//     let my_gmt_en = re_gmt_en.exec(strTime_3);
-//     gmt_en_array.push(my_gmt_en[2] ? my_gmt_en[2] : my_gmt_en[3]);
-// });
+// 重新排序 (升序)
+aryIannaTimeZones.sort();
 
 // HTML 讀取後執行
 $(function(){
@@ -435,57 +394,63 @@ $(function(){
 
     /* 刷新資料 */
     function refresh() {
+        // 重置
         date = new Date();
         cur_date_time_array = [];
+        cur_hour = [];
 
         cur_time_zone.forEach((timeZone)=>{
+            // GMT 表示式
             let strTime = date.toLocaleString("zh-TW", {
                 timeZone: `${timeZone}`,
                 timeZoneName: 'short' //(e.g., GMT+1)
             });
+            // 標準時間名稱 (中文)
             let strTime_2 = date.toLocaleString("zh-TW", {
                 timeZone: `${timeZone}`,
-                timeZoneName: 'long' //(e.g., British Summer Time)
+                timeZoneName: 'long' //(e.g., 台北標準時間)
             });
+            // 標準時間名稱 (英文)
             let strTime_3 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 timeZoneName: 'long' //(e.g., British Summer Time)
             });
-            
+            // 年份 (yyyy)
             let strTime_4_1_1 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
-                hourCycle: 'h24',
-                year: 'numeric'
+                hourCycle: 'h24', year: 'numeric'
             });
+            // 月份 (mm)
             let strTime_4_1_2 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
                 month: '2-digit'
             });
+            // 日期 (dd)
             let strTime_4_1_3 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
                 day: '2-digit'
             });
-
+            // 星期幾 (www)
             let strTime_4_2 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 weekday: 'short'
             });
-
+            // 時間 (hh:mm:ss)
             let strTime_4_3 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
                 hour: '2-digit', minute: '2-digit', second: '2-digit'
             });
-
+            // 幾點 (hh)
             let strTime_5 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
                 hourCycle: 'h24',
                 hour: '2-digit'
             });
     
-            // 目前日期時間星期幾
+            // 目前日期時間星期幾 (yyyy/mm/dd www hh:mm:ss)
             cur_date_time_array.push(`${strTime_4_1_1}/${strTime_4_1_2}/${strTime_4_1_3} ${strTime_4_2} ${strTime_4_3}`);
 
             // GMT 差
@@ -493,7 +458,7 @@ $(function(){
             let my_gmt = re_gmt.exec(strTime);
             gmt_array.push(my_gmt[1]);
             
-            // 標準時間名 (ch))
+            // 標準時間名 (ch)
             let re_gmt_ch = /\[(.+?)\]/g; // 取出中括號的內容
             let my_gmt_ch = re_gmt_ch.exec(strTime_2);
             gmt_ch_array.push(my_gmt_ch[1]);
@@ -503,17 +468,13 @@ $(function(){
             let my_gmt_en = re_gmt_en.exec(strTime_3);
             gmt_en_array.push(my_gmt_en[2] ? my_gmt_en[2] : my_gmt_en[3]);
 
-            // 目前幾點
+            // 目前幾點 (hh)
             cur_hour.push(strTime_5);
         });
-
-        // updateCurrentDateTime(); // 更新目前時間
-        // setTimeout(refresh(), 1000);
     }
 
     /* 插入資料 */
     function appendData() {
-        let hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
         let cur_time_zone_hours_array = [];
 
         for(let i=0;i<cur_time_zone.length;i++){
@@ -536,12 +497,12 @@ $(function(){
 
             // 轉換為 HTML
             let temp_html_hour_array = [];
-
+            
             for(let c=0;c<temp_hours.length;c++){
-                let html_str = `<span class="hour">${temp_hours[c]}</span>`;
+                let html_str = `<span class="hour c${temp_hours[c]}">${temp_hours[c]}</span>`;
                 // 目前時間
                 if(temp_hours[c]==cur_hour[i]){
-                    html_str = `<span class="hour cur">${temp_hours[c]}</span>`;
+                    html_str = `<span class="hour cur c${temp_hours[c]}">${temp_hours[c]}</span>`;
                 }
                 temp_html_hour_array.push(html_str);
             }
@@ -567,14 +528,25 @@ $(function(){
                 </div>`
             );
         }
-    }
 
-    /* 更新目前資料 */
-    // function updateCurrentDateTime() {
-    //     for(let i=0;i<cur_time_zone.length;i++){
-    //         main.find('.row').eq(i+1).find('div').eq(0).text(cur_date_time_array[i]);
-    //     }
-    // }
+        /* 時區欄位 hover 效果 */
+        $('.row').each(function(index){
+            $(this).find('.hour').each(function(index2){
+                $(this).on('mouseover', function(event){
+                    $('.row').each(function(index3){
+                        $(this).find('.hour').each(function(index4){
+                            if(index2==index4){
+                                $(this).css('opacity', '0.7');
+                            }
+                            else{
+                                $(this).css('opacity', '1');
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    }
 
     /* 新增輸入控件 */
     function buildInput() {
@@ -592,7 +564,7 @@ $(function(){
     /* 刷新時間 */
     $('#refresh-btn').on('click', function(event){
         refresh(); // 刷新資料
-        main.find('.row').not(':first-child').remove();
+        main.find('.row').not(':first-child').remove(); // 移除第一列以外的所有列
         appendData(); // 插入資料
     });
 
@@ -622,23 +594,4 @@ $(function(){
     refresh(); // 刷新資料
     appendData(); // 插入資料
     buildInput(); // 新增輸入控件
-
-    /* 時區欄位 hover 效果 */
-    $('.row').each(function(index){
-        $(this).find('.hour').each(function(index2){
-            $(this).on('mouseover', function(event){
-                $('.row').each(function(index3){
-                    $(this).find('.hour').each(function(index4){
-                        if(index2==index4){
-                            $(this).css('opacity', '0.7');
-                        }
-                        else{
-                            $(this).css('opacity', '1');
-                        }
-                    });
-                });
-            });
-        });
-    });
-
 });
