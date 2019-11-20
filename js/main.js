@@ -400,7 +400,17 @@ $(function(){
         cur_hour = [];
 
         cur_time_zone.forEach((timeZone)=>{
-            // GMT 表示式
+            // 世界時區
+            /* 
+                GMT(Greenwich Mean Time) 格林威治時間(世界標準時間)
+                UTC(Coordinated Univerasl Time) 世界協調時間
+                PST/PT(Pacific Standard Time) 太平洋標準時間 (UTC-8)
+                MST(Mountain Standard Time) 山區標準時間 (UTC-7)
+                CST(Central Standard Time) 中部標準時間 (UTC-6)
+                EST(Eastern Standard Time) 東岸標準時間 (UTC-5)
+                AKST(Alaska Standard Time) 阿拉斯加標準時間 (UTC-9)
+                HAST(Hawaii-Aleutian Standard Time)夏威夷-阿留申標準時間 (UTC-10)
+            */
             let strTime = date.toLocaleString("zh-TW", {
                 timeZone: `${timeZone}`,
                 timeZoneName: 'short' //(e.g., GMT+1)
@@ -453,7 +463,7 @@ $(function(){
             // 目前日期時間星期幾 (yyyy/mm/dd www hh:mm:ss)
             cur_date_time_array.push(`${strTime_4_1_1}/${strTime_4_1_2}/${strTime_4_1_3} ${strTime_4_2} ${strTime_4_3}`);
 
-            // GMT 差
+            // 世界時區
             let re_gmt = /\[(.+?)\]/g; // 取出中括號的內容
             let my_gmt = re_gmt.exec(strTime);
             gmt_array.push(my_gmt[1]);
