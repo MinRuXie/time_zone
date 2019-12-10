@@ -398,6 +398,9 @@ $(function(){
         date = new Date();
         cur_date_time_array = [];
         cur_hour = [];
+        gmt_array = [];
+        gmt_ch_array = [];
+        gmt_en_array = [];
 
         cur_time_zone.forEach((timeZone)=>{
             // 世界時區
