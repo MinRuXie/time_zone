@@ -5,6 +5,7 @@ let cur_time_zone = [
     'Asia/Taipei',
     'Asia/Tokyo',
     'America/Los_Angeles',
+    'America/New_York',
     'Australia/Adelaide',
     'Australia/Melbourne'
 ];
@@ -12,6 +13,7 @@ let who = [
     '我們',
     'PM',
     '米國電商',
+    '珍珠',
     '廖廖',
     '妍寧'
 ];
