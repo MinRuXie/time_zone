@@ -18,7 +18,7 @@ let who = [
     '妍寧'
 ];
 
-let hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+let hours = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
 let gmt_array = [];  // GMT (Greenwich Mean Time) 差
 let gmt_en_array = []; // 標準時間名(en)
 let gmt_ch_array = []; // 標準時間名(ch)
@@ -458,6 +458,7 @@ $(function(){
                 hourCycle: 'h24',
                 hour: '2-digit', minute: '2-digit', second: '2-digit'
             });
+
             // 幾點 (hh)
             let strTime_5 = date.toLocaleString("en-US", {
                 timeZone: `${timeZone}`,
@@ -498,6 +499,7 @@ $(function(){
                 // 從目前時間加入
                 temp_hours.push(hours[j]);
             }
+
             if(temp_hours.length<24){
                 // 從頭加入
                 for(let t=0;t<hours.indexOf(cur_hour[i]);t++){
@@ -522,6 +524,7 @@ $(function(){
                 temp_html_hour_array.push(html_str);
             }
 
+            
             // 轉換為字串
             cur_time_zone_hours_array.push(temp_html_hour_array.join(""));
 
