@@ -5,5 +5,5 @@
     * https://stackoverflow.com/questions/38399465/how-to-get-list-of-all-timezones-in-javascript
 * `Antarctica/DumontDUrville`
     * https://bugs.chromium.org/p/chromium/issues/detail?id=928068
-* `Asia/Qostanay
+* `Asia/Qostanay`
     * https://bugs.chromium.org/p/chromium/issues/detail?id=928068
