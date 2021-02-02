@@ -30,15 +30,15 @@ getTimeZoneData().then(
 
         // HTML 讀取後執行
         $(function(){
-            let add = $('#add');
-            let main = $('#main');
+            let $add = $('#add');
+            let $main = $('#main');
 
             //-------------------
             // 自定義 function
             //-------------------
 
             /* 刷新資料 */
-            function refresh() {
+            function refreshData() {
                 // 重置
                 date = new Date();
                 current_list.splice(0, current_list.length); // 清空
@@ -158,25 +158,25 @@ getTimeZoneData().then(
             }
 
 
-            /* 插入資料 */
-            function appendData() {
+            /* 更新畫面 */
+            function updateView() {
                 // 移除第一列以外的所有列
-                main.find('.row').not(':first-child').remove(); 
+                $main.find('.row').not(':first-child').remove(); 
 
                 // 重新加入資料
                 for (let i=0 ; i < current_list.length ; i++) {
-                    main.find('.container').append(
+                    $main.find('.container').append(
                         `<div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-3">
                                 ${user_list[i].name}<br>
                                 ${current_list[i].cur_date_time_array}<br>
                             </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-7">${current_list[i].cur_time_zone_hours_list}</div>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                            <div class="col-lg-7 col-md-7 col-sm-9 col-9">${current_list[i].cur_time_zone_hours_list}</div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">
                                 ${user_list[i].timezone}<br>
                                 ${current_list[i].gmt_array}
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2 d-none d-md-block">
                                 ${current_list[i].gmt_ch_array}<br>
                                 ${current_list[i].gmt_en_array}
                             </div>
@@ -190,7 +190,7 @@ getTimeZoneData().then(
                         $(this).on('mouseover', function(event) {
                             $('.row').each(function(index3){
                                 $(this).find('.hour').each(function(index4) {
-                                    if (index2==index4) {
+                                    if (index2 == index4) {
                                         $(this).css('opacity', '0.7');
                                     } else {
                                         $(this).css('opacity', '1');
@@ -202,10 +202,10 @@ getTimeZoneData().then(
                 });
             }
 
-            /* 新增輸入控件 */
+            /* 建置輸入控件 */
             function buildInput() {
-                for (let h=0;h<aryIannaTimeZones.length;h++) {
-                    add.find('#timezone select').append(`
+                for (let h=0 ; h < aryIannaTimeZones.length ; h++) {
+                    $add.find('#timezone select').append(`
                         <option value="${aryIannaTimeZones[h]}">${aryIannaTimeZones[h]}</option>
                     `);
                 }
@@ -217,8 +217,8 @@ getTimeZoneData().then(
             
             /* 刷新時間 */
             $('#refresh-btn').on('click', function(event){
-                refresh(); // 刷新資料
-                appendData(); // 插入資料
+                refreshData(); // 刷新資料
+                updateView(); // 更新畫面
             });
 
             /* 新增成員 */
@@ -229,8 +229,8 @@ getTimeZoneData().then(
                 if(member_name != '' && member_location != ''){
                     user_list.push({"name": member_name, "timezone": member_location});
                     
-                    refresh(); // 刷新資料
-                    appendData(); // 插入資料
+                    refreshData(); // 刷新資料
+                    updateView(); // 更新畫面
 
                     // 清空
                     $('#member_name').val('');
@@ -242,8 +242,8 @@ getTimeZoneData().then(
             //-------------------
             // 初始化
             //-------------------
-            refresh(); // 刷新資料
-            appendData(); // 插入資料
+            refreshData(); // 刷新資料
+            updateView(); // 更新畫面
             buildInput(); // 新增輸入控件
             
         });

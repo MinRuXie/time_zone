@@ -7,22 +7,21 @@
     <title>時區對照表</title>
     <link rel="icon" href="images/moon.svg" type="image/x-icon">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <section id="add">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-2">你要監控誰？</div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-12">你要監控誰？</div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-12">
                     <input id="member_name" type="text">
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-2">他人在哪兒？</div>
-                <div id="timezone" class="col-lg-4 col-md-4 col-sm-4 col-4">
-                    <select id="member_location" name="YourLocation">
-                    </select>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-12">他人在哪兒？</div>
+                <div id="timezone" class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <select id="member_location" name="YourLocation"></select>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-12">
                     <button id="add-btn">新增成員</button>
                 </div>
             </div>
@@ -31,13 +30,13 @@
     <section id="main">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-3">
                     目前時間
                     <button id="refresh-btn">刷新時間</button>
                 </div>
-                <div class="col-lg-7 col-md-7 col-sm-7 col-7">時區對照</div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-1">地區/城市/GMT</div>
-                <div class="col-lg-2 col-md-2 co2-sm-2 col-2">時區</div>
+                <div class="col-lg-7 col-md-7 col-sm-9 col-9">時區對照</div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">地區/城市/GMT</div>
+                <div class="col-lg-2 col-md-2 co2-sm-2 col-2 d-none d-md-block">時區</div>
             </div>
         </div>
     </section>

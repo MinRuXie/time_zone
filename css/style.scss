@@ -1,0 +1,76 @@
+* {
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+
+#add {
+    padding: 30px;
+}
+
+#main {
+    font-size: 12px;
+
+    .row {
+        display: flex;
+        align-items: center;
+
+        div:nth-child(1) {
+            font-size: 16px;
+        }
+
+        &:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        &:first-child {
+            background-color: #000;
+            color: #FFF;
+        }
+
+        div {
+            text-align: center;
+            overflow-x: auto;
+        }
+    }
+
+    .hour {
+        padding: 20px 0;
+        display: inline-block;
+        width: 26px;
+        background-color: #FFF;
+        font-size: 14px;
+        -webkit-user-select: none;
+
+        &.c18 {background-color: rgba(38, 42, 70, 0.7);color: #FFF;}
+        &.c19 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c20 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c21 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c22 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c23 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c24 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c01 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c02 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c03 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c04 {background-color: rgba(38, 42, 70, 0.8);color: #FFF;}
+        &.c05 {background-color: rgba(38, 42, 70, 0.7);color: #FFF;}
+        &.c06 {background-color: rgba(38, 42, 70, 0.6);color: #FFF;}
+        &.c07 {background-color: rgba(38, 42, 70, 0.5);color: #FFF;}
+        &.c08 {background-color: rgba(38, 42, 70, 0.4);color: #FFF;}
+
+        &.c09 {background-color: rgba(245, 208, 107, 0.8);color: rgb(31, 52, 71);}
+        &.c10 {background-color: rgba(245, 208, 107, 0.8);color: rgb(31, 52, 71);}
+        &.c11 {background-color: rgba(245, 208, 107, 0.5);color: rgb(31, 52, 71);}
+        &.c12 {background-color: rgba(245, 208, 107, 0.2);color: rgb(230, 41, 41);}
+        &.c13 {background-color: rgba(245, 208, 107, 0.5);color: rgb(31, 52, 71);}
+        &.c14 {background-color: rgba(245, 208, 107, 0.8);color: rgb(31, 52, 71);}
+        &.c15 {background-color: rgba(245, 208, 107, 0.8);color: rgb(31, 52, 71);}
+        &.c16 {background-color: rgba(245, 208, 107, 0.5);color: rgb(31, 52, 71);}
+        &.c17 {background-color: rgba(245, 208, 107, 0.8);color: rgb(31, 52, 71);}
+
+        &.cur {
+            border: 3px solid rgb(52, 170, 115);
+            font-weight: bold;
+            box-sizing: content-box;
+            border-radius: 5px;
+        }
+    }
+}

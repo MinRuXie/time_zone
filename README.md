@@ -1,4 +1,11 @@
-# Timezone
+# 時區對照表
+
+## 開發工具
+* HTML
+* SCSS
+* Javascript
+* jQuery
+* Bootstrap
 
 ## data
 * How to get list of all timezones in javascript
