@@ -244,7 +244,7 @@ getTimeZoneData().then(
             //-------------------
             refreshData(); // 刷新資料
             updateView(); // 更新畫面
-            buildInput(); // 新增輸入控件
+            buildInput(); // 建置輸入控件
             
         });
     },
