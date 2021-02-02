@@ -28,9 +28,15 @@ let gmt_ch_array = []; // 標準時間名(ch)
 let aryIannaTimeZones = [];
 
 async function getTimeZoneData() {
-    let res = await fetch('../data/timezone.json');
-    let data = await res.json();
-    aryIannaTimeZones = await data.aryIannaTimeZones;
+    // let res = await fetch('../data/timezone.json');
+    let timezoneResponse = await fetch('https://minruxie.github.io/time_zone/data/timezone.json');
+    let userdataResponse = await fetch('https://minruxie.github.io/time_zone/data/userdata.json');
+
+    let timezoneJsonObj = await timezoneResponse.json();
+    aryIannaTimeZones = await timezoneJsonObj.aryIannaTimeZones;
+
+    let userdataJsonObj = await userdataResponse.json();
+    // aryIannaUserdatas = await userdataJsonObj.aryIannaUserdatas;
     
     // 重新排序 (升序)
     aryIannaTimeZones.sort();
