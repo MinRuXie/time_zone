@@ -7,6 +7,25 @@
 * jQuery
 * Bootstrap
 
+## Project Structure
+```
+project
+    |- index.html
+    |
+    |- css
+    |   |- plugins
+    |   
+    |- js
+    |   |- plugins
+    |   
+    |- data
+    |   |- timezone.json
+    |   |- userdata.json
+    |   
+    |- images
+    |
+```
+
 ## data
 * How to get list of all timezones in javascript
     * https://stackoverflow.com/questions/38399465/how-to-get-list-of-all-timezones-in-javascript
