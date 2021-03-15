@@ -6,6 +6,7 @@
 * Javascript
 * jQuery
 * Bootstrap
+* AJAX (fetch data)
 
 ## Project Structure
 ```
